@@ -3,6 +3,7 @@ import { CreateUserDto } from '../../dto/create-user.dto';
 import { UpdateUserDto } from '../../dto/update-user.dto';
 import { User } from '../../entities/user.entity';
 import { UserRepository } from '../user.repository';
+import { plainToInstance } from 'class-transformer';
 
 export class UsersInMemoryRepository implements UserRepository {
   create(data: CreateUserDto): User | Promise<User> {
@@ -11,19 +12,19 @@ export class UsersInMemoryRepository implements UserRepository {
       ...data,
     });
     users.push(newUser);
-    return newUser;
+    return plainToInstance(User, newUser);
   }
   findOne(id: string): Promise<User> | User {
     const user = users.find((user) => user.id === id);
     if (!user) {
       return user;
     }
-    return user;
+    return plainToInstance(User, user);
   }
   update(id: string, data: UpdateUserDto): User | Promise<User> {
     const userIndex = users.findIndex((user) => user.id === id);
     users[userIndex] = { ...users[userIndex], ...data };
-    return users[userIndex];
+    return plainToInstance(User, users[userIndex]);
   }
   delete(id: string): void | Promise<void> {
     const userIndex = users.findIndex((user) => user.id === id);
