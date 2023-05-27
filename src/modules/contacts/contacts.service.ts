@@ -10,10 +10,10 @@ export class ContactsService {
     return await this.contactsRepository.create(createContactDto, userId);
   }
 
-  async findByEmail(email: string) {
-    const contact = await this.contactsRepository.findByEmail(email);
-    return contact;
-  }
+  // async findByEmail(email: string) {
+  //   const contact = await this.contactsRepository.findByEmail(email);
+  //   return contact;
+  // }
 
   async findOne(id: string) {
     const contact = await this.contactsRepository.findOne(id);

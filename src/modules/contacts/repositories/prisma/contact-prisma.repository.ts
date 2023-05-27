@@ -28,12 +28,10 @@ export class ContactPrismaRepository implements ContactsRepository {
 
     return newContact;
   }
-  async findByEmail(email: string): Promise<Contact> {
-    const userContact = await this.prisma.contacts.findUnique({
-      where: { email },
-    });
-    return plainToInstance(Contact, userContact);
-  }
+  // async findByEmail(email: string): Promise<Contact> {
+  //   const userContact = await this.prisma.contacts.create();
+  //   return plainToInstance(Contact, userContact);
+  // }
   async findAll(): Promise<Contact[]> {
     const contacts = await this.prisma.contacts.findMany({
       include: { user: true },
