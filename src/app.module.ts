@@ -1,26 +1,8 @@
 import { Module } from '@nestjs/common';
-import { UsersService } from './modules/users/users.service';
-import { UserRepository } from './modules/users/repositories/user.repository';
-import { UsersInMemoryRepository } from './modules/users/repositories/memory/user.in-memory.repository';
-import { UsersController } from './modules/users/users.controller';
-import { ContactsRepository } from './modules/contacts/repositories/contact.repository';
-import { ContactsInMemoryRepository } from './modules/contacts/repositories/memory/contact.in-memory.repository';
-import { ContactsService } from './modules/contacts/contacts.service';
-import { ContactsController } from './modules/contacts/contacts.controller';
+import { UsersModule } from './modules/users/users.module';
+import { ContactsModule } from './modules/contacts/contacts.module';
 
 @Module({
-  controllers: [UsersController, ContactsController],
-  providers: [
-    UsersService,
-    ContactsService,
-    {
-      provide: UserRepository,
-      useClass: UsersInMemoryRepository,
-    },
-    {
-      provide: ContactsRepository,
-      useClass: ContactsInMemoryRepository,
-    },
-  ],
+  imports: [UsersModule, ContactsModule],
 })
 export class AppModule {}

@@ -14,6 +14,10 @@ export class UsersInMemoryRepository implements UserRepository {
     users.push(newUser);
     return plainToInstance(User, newUser);
   }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  findByEmail(_email: string): User | Promise<User> {
+    throw new Error('Method not implemented.');
+  }
   findOne(id: string): Promise<User> | User {
     const user = users.find((user) => user.id === id);
     if (!user) {
