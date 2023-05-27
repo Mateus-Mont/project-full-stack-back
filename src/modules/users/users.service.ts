@@ -6,7 +6,6 @@ import {
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserRepository } from './repositories/user.repository';
-import { users } from 'src/database/db';
 
 @Injectable()
 export class UsersService {
@@ -22,7 +21,7 @@ export class UsersService {
   }
 
   async findAll() {
-    return users;
+    return await this.usersRepository.findAll();
   }
 
   async findOne(id: string) {

@@ -3,7 +3,7 @@ import { PrismaClient } from '@prisma/client';
 
 @Injectable()
 export class PrismaService extends PrismaClient implements OnModuleInit {
-  findUnique(arg0: { where: { email: string; }; }) {
+  findUnique(arg0: { where: { email: string } }) {
     throw new Error('Method not implemented.');
   }
   async onModuleInit() {

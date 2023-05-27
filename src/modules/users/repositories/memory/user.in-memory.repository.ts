@@ -6,6 +6,9 @@ import { UserRepository } from '../user.repository';
 import { plainToInstance } from 'class-transformer';
 
 export class UsersInMemoryRepository implements UserRepository {
+  findAll(): User[] | Promise<User[]> {
+    throw new Error('Method not implemented.');
+  }
   create(data: CreateUserDto): User | Promise<User> {
     const newUser = new User();
     Object.assign(newUser, {
