@@ -10,26 +10,26 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User  {
-  id String @id
-  name String
-  email String @unique
-  tel String
-  password String
-  contacts Contacts[]
-  created_at DateTime @default(now())
+model User {
+  id         String    @id
+  name       String
+  email      String    @unique
+  tel        String
+  password   String
+  contacts   Contacts[]
+  created_at DateTime  @default(now())
 
   @@map("users")
 }
 
 model Contacts {
-  id String @id
-  name String
-  email String
-  tel String
-  userId String
-  created_at DateTime @default(now())
-  user User @relation(fields: [userId], references: [id])
+  id         String    @id
+  name       String
+  email      String
+  tel        String
+  userId     String
+  created_at DateTime  @default(now())
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("contacts")
 }
