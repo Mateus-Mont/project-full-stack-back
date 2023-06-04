@@ -143,6 +143,13 @@ Caso dê tudo certo, a resposta será assim:
 }
 ```
 
+
+<h2 align ='center'> Listando usuário </h2>
+
+Nessa aplicação o usuário deve estar autenticado, podendo acessar aos seus dados e seus contatos
+
+`GET /users/:id - FORMATO DA RESPOSTA - STATUS 200`
+
 ```json
 [
   {
